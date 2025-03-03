@@ -1,0 +1,52 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    background-color: transparent;
+  }
+  
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-bottom: 50px; */
+  }
+  
+  .logo-part {
+    height: 30px;
+    margin: 0 2px;
+    background-color: #1A3E7C;
+  }
+  
+  .part1 {
+    width: 10px;
+  }
+  
+  .part2 {
+    width: 8px;
+  }
+  
+  .part3 {
+    width: 20px;
+    height: 30px;
+    border-bottom-right-radius: 20px;
+    position: relative;
+  }
+  
+  .gold-square {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 10px;
+    background-color: orange;
+  }
+  
+  .bank-name {
+    font-family: sans-serif;
+    font-size: 24px;
+    color: #1A3E7C;
+    text-align: center;
+  }
