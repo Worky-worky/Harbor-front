@@ -34,13 +34,8 @@ export default function BankingMatch() {
                   <div className="aspect-[9/19.5] relative">
                     <div className="absolute inset-0 p-4">
                       <div className="space-y-4">
-                        <div className="flex items-center justify-between">
-                          <div>
-                            <HarboLogo />
-                          </div>
-                          <span className="text-primary font-medium text-sm">
-                            Your goals
-                          </span>
+                        <div className="flex mt-3 items-center justify-between font-bold">
+                          <HarboLogo size="sm" />
                         </div>
 
                         <p className="text-sm text-gray-600">

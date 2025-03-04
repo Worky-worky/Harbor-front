@@ -25,7 +25,6 @@ import CardShowcase from "@/components/Card-showcase";
 import ShopSave from "@/components/Shopsave";
 import BankingMatch from "@/components/BankingMatch";
 import Footer from "@/components/Footer";
-import { BankingDashboard } from "@/components/bank-dashboard/BankDashboard";
 import {
   Dialog,
   DialogContent,
@@ -33,6 +32,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import SignUpPage from "./signup/page";
+import BankingNeeds from "@/components/bank-dashboard/BankingNeeds";
 
 export default function HarborfrontLanding() {
   return (
@@ -116,6 +116,10 @@ export default function HarborfrontLanding() {
       {/* Featured Products */}
       <section>
         <FeaturedProducts />
+      </section>
+
+      <section>
+        <BankingNeeds />
       </section>
 
       <section>

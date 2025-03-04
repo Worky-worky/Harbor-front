@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Facebook, Twitter, Youtube } from "lucide-react";
 import { Container } from "./utils";
+import HarboLogo from "./logo/HarboLogo";
 
 export default function Footer() {
   const footerLinks = {
@@ -68,18 +69,25 @@ export default function Footer() {
           </div>
 
           <div className="flex justify-center gap-6 items-center border-t border-gray-700 pt-5 mb-5 w-full">
-  <Link href="#" className="text-gray-300 hover:text-white transition-colors">
-    <Facebook className="h-6 w-6" />
-  </Link>
-  <Link href="#" className="text-gray-300 hover:text-white transition-colors">
-    <Twitter className="h-6 w-6" />
-  </Link>
-  <Link href="#" className="text-gray-300 hover:text-white transition-colors">
-    <Youtube className="h-6 w-6" />
-  </Link>
-</div>
-
-
+            <Link
+              href="#"
+              className="text-gray-300 hover:text-white transition-colors"
+            >
+              <Facebook className="h-6 w-6" />
+            </Link>
+            <Link
+              href="#"
+              className="text-gray-300 hover:text-white transition-colors"
+            >
+              <Twitter className="h-6 w-6" />
+            </Link>
+            <Link
+              href="#"
+              className="text-gray-300 hover:text-white transition-colors"
+            >
+              <Youtube className="h-6 w-6" />
+            </Link>
+          </div>
 
           {/* Legal Footer */}
           <div className="flex flex-col items-center justify-center border-t border-gray-700 pt-8">
@@ -149,10 +157,17 @@ export default function Footer() {
               </p>
             </div>
           </div>
+          <div className="p-4">
+            <div className="w-10">
+              {" "}
+              {/* or w-24 for even smaller */}
+              <HarboLogo />
+            </div>
+          </div>
         </div>
 
         {/* Feedback button */}
-        <div className="fixed bottom-4 right-4">
+        {/* <div className="fixed bottom-4 right-4">
           <button className="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 text-sm">
             <svg
               className="w-4 h-4 rotate-90"
@@ -169,7 +184,7 @@ export default function Footer() {
             </svg>
             Feedback
           </button>
-        </div>
+        </div> */}
       </Container>
     </footer>
   );

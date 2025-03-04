@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Analytics = () => {
+const userAnalytics = () => {
   return (
     <div>Analytics</div>
   )
 }
 
-export default Analytics
+export default userAnalytics

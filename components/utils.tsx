@@ -141,3 +141,13 @@ export function FeaturedProducts() {
     </section>
   )
 }
+
+export const getContentWidth = (sidebarOpen: boolean) => {
+  return {
+    container: `transition-all duration-300 w-full ${
+      sidebarOpen ? 'pl-64' : 'pl-20'
+    }`,
+    content: `max-w-6xl mx-auto px-4 sm:px-6 lg:px-8`
+  }
+}
+

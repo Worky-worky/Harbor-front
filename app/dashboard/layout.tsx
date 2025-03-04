@@ -1,18 +1,24 @@
-import Sidebar from "@/components/bank-dashboard/SideBar"
+'use client'
+import { useState } from 'react'
+import Sidebar from '@/components/bank-dashboard/SideBar'
+import { getContentWidth } from '@/components/utils'
 
 export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const [sidebarOpen, setSidebarOpen] = useState(true)
+  const width = getContentWidth(sidebarOpen)
+
   return (
-    <div className="flex min-h-screen bg-gray-50">
-      <Sidebar />
-      <div className="flex-1 ml-64">
-        <main className="mx-auto max-w-7xl px-4 md:px-8">
+    <div className="flex bg-gray-100">
+      <Sidebar  />
+      <main className={width.container}>
+        <div className={width.content}>
           {children}
-        </main>
-      </div>
+        </div>
+      </main>
     </div>
   )
 }

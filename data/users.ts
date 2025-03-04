@@ -8,7 +8,7 @@ export interface Userinfo {
     role: 'user' | 'admin'
     accountNumber: string
     routingNumber: string
-    accountType: 'checking' | 'savings'
+    accountType: 'Checking' | 'Savings'
     cardExpiryMonth: string
     cardExpiryYear: string
     cvv: string
@@ -32,7 +32,7 @@ export interface Userinfo {
       role: 'user',
       accountNumber: '4837203900947300',
       routingNumber: '021000021',
-      accountType: 'checking',
+      accountType: 'Checking',
       cardExpiryMonth: '12',
       cardExpiryYear: '2025',
       cvv: '123',
@@ -52,17 +52,17 @@ export interface Userinfo {
       password: 'Password456',
       avatar: '/avatars/sarah.jpg',
       role: 'user',
-      accountNumber: '5555555555554444',
+      accountNumber: '682850982759',
       routingNumber: '026009593',
-      accountType: 'savings',
+      accountType: 'Savings',
       cardExpiryMonth: '03',
       cardExpiryYear: '2026',
       cvv: '456',
       cardNetwork: 'mastercard',
-      balance: 35000,
+      balance: 0,
       income: 1000000,
-      expenses: 500000,
-      savings: 500000,
+      expenses: 120000,
+      savings: 200000,
       createdAt: new Date('2024-01-15'),
       lastLogin: new Date('2024-02-14')
     },
@@ -74,14 +74,14 @@ export interface Userinfo {
       password: 'Password236',
       avatar: '/avatars/cain.jpg',
       role: 'user',
-      accountNumber: '378282246310005',
+      accountNumber: '378282246316295',
       routingNumber: '121000248',
-      accountType: 'savings',
+      accountType: 'Savings',
       cardExpiryMonth: '08',
       cardExpiryYear: '2024',
       cvv: '789',
       cardNetwork: 'amex',
-      balance: 45000,
+      balance: 0,
       income: 97789063,
       expenses: 23980393,
       savings: 10000000,
