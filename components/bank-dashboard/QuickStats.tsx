@@ -25,16 +25,15 @@ export default function QuickStats() {
     user.savings
   ) : 0
 
-
   return (
-    <div className="mb-6 grid gap-6 md:grid-cols-4">
-      <QuickStatCard
+    <div className="mb-4 grid gap-4 grid-cols-1 md:grid-cols-2">
+      {/* <QuickStatCard
         title="Total Balance"
         value={formatCurrency(totalBalance)}
         change="+12.5%"
         trend="up"
         icon={<Wallet className="h-5 w-5 text-blue-600" />}
-      />
+      /> */}
       <QuickStatCard
         title="Total Income"
         value={formatCurrency(user?.income || 0)}
@@ -49,13 +48,13 @@ export default function QuickStats() {
         trend="down"
         icon={<CreditCard className="h-5 w-5 text-red-600" />}
       />
-      <QuickStatCard
+      {/* <QuickStatCard
         title="Savings"
         value={formatCurrency(user?.savings || 0)}
         change="+18.1%"
         trend="up"
         icon={<PieChart className="h-5 w-5 text-purple-600" />}
-      />
+      /> */}
     </div>
   )
 }
@@ -70,13 +69,15 @@ interface QuickStatCardProps {
 
 function QuickStatCard({ title, value, change, trend, icon }: QuickStatCardProps) {
   return (
-    <Card>
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle className="text-sm font-medium">{title}</CardTitle>
-        {icon}
+    <Card className="flex flex-col items-center justify-center text-center h-24">
+      <CardHeader className="flex items-center justify-between w-full space-y-0 pb-2">
+        <div className="flex items-center space-x-2">
+          <CardTitle className="text-sm font-medium">{title}</CardTitle>
+          {icon}
+        </div>
       </CardHeader>
-      <CardContent>
-        <div className="text- font-bold">{value}</div>
+      <CardContent className="flex flex-col items-center justify-center">
+        <div className="text-lg font-bold">{value}</div>
         <p className={`text-xs ${trend === "up" ? "text-green-600" : "text-red-600"}`}>
           {change} from last month
         </p>

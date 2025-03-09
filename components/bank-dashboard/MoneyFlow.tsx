@@ -44,16 +44,7 @@ const MoneyFlowCard = () => {
   const currentUser = getUserById('1')
 
   return (
-    <div className="grid gap-4">
-      <ActionButtons/>
-      
-      {/* Bank Card */}
-      <Card>
-        <CardContent className="pt-6 shadow-lg">
-          {currentUser && <UserBankCard user={currentUser} showBalance={true} />}
-        </CardContent>
-      </Card>
-
+    <div className="grid gap-4"> 
       {/* Chart Card */}
       <Card>
         <CardContent className="flex items-start justify-between p-4">

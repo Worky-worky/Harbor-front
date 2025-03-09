@@ -11,6 +11,7 @@ import {
   Bell,
   Settings,
   LogOut,
+  Send,
 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
@@ -26,7 +27,9 @@ export default function Sidebar() {
   return (
     <div className="fixed left-0 top-0 h-screen w-64 flex flex-col border-r bg-white/95 backdrop-blur-sm">
       <div className="py-5 flex items-center border-b-2 justify-center font-bold">
+      <Link href="/" >
         <HarboLogo />
+      </Link>
       </div>
 
       <div className="flex-1 flex flex-col space-y-2 px-3 mt-3">
@@ -71,14 +74,22 @@ export default function Sidebar() {
             Account
           </NavItem>
 
-          {/* {isAdmin && ( */}
+          <NavItem
+            href="/dashboard/sendMoney"
+            icon={<Send />}
+            active={pathname === "/dashboard/sendMoney"}
+          >
+            Send Money
+          </NavItem>
+
+          {/* {isAdmin && (
             <NavItem
               href="/dashboard/manageTransactions"
               icon={<FileText />}
               active={pathname === "/dashboard/manageTransactions"}
             >
               ADMIN
-            </NavItem>
+            </NavItem> */}
           {/* )} */}
         </div>
       </div>

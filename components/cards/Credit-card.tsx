@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import { PinIcon as Chip } from "lucide-react";
-import HarboLogo from "../logo/HarboLogo";
 
 interface CreditCardProps {
   cardNumber?: string;
@@ -10,12 +9,12 @@ interface CreditCardProps {
 }
 
 export default function CreditCard({
-  cardNumber = "1234 5678 1234 5678",
-  cardholderName = "CARDHOLDER NAME",
-  expiryDate = "00/00",
+  cardNumber = "7839 9038 9012 3603",
+  cardholderName = "Georgia Franklin",
+  expiryDate = "07/28",
 }: CreditCardProps) {
   return (
-    <div className="relative w-[425px] h-[270px] rounded-[20px] p-8 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 overflow-hidden">
+    <div className="relative w-[425px] h-[270px] rounded-[20px] p-8 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 overflow-hidden shadow-lg">
       {/* Background Lines */}
       <Image
         src="/icons/Lines.svg"
@@ -25,53 +24,52 @@ export default function CreditCard({
       />
 
       <div className="h-full flex flex-col justify-between text-white relative">
-        <div className="flex justify-between items-start px-5">
-          <div className="w-3 h-3 opacity-70">
-            <HarboLogo />
-          </div>
-
-          <div className="flex items-center gap-4">
+        <div className="flex justify-between items-start">
+          <div className="flex items-center gap-2">
             <Image
               src="/icons/chipp.png"
-              alt="Paypass"
-              width={30}
-              height={30}
+              alt="Chip"
+              width={40}
+              height={40}
               className="opacity-90 bg-transparent"
             />
             <Image
               src="/icons/Paypass.svg"
               alt="Paypass"
-              width={30}
-              height={30}
+              width={40}
+              height={40}
               className="opacity-90"
             />
           </div>
         </div>
 
-        <div className="space-y-6">
-          <div className="text-2xl tracking-[0.2em] font-medium">
+        <div className="space-y-4">
+          <div className="text-2xl tracking-widest font-medium">
             {cardNumber.match(/.{1,4}/g)?.join(" ")}
           </div>
 
           <div className="flex justify-between items-end">
-            <div className="space-y-2">
+            <div className="space-y-1">
               <p className="text-xs opacity-75">CARDHOLDER NAME</p>
               <p className="font-medium tracking-wider">{cardholderName}</p>
             </div>
             <div className="text-right">
-              <div className="space-y-2">
+              <div className="space-y-1">
                 <p className="text-xs opacity-75">VALID THRU</p>
                 <p className="font-medium tracking-wider">{expiryDate}</p>
               </div>
-              <Image
-                src="/icons/mastercard.svg"
-                alt="Mastercard"
-                width={60}
-                height={40}
-                className="mt-2"
-              />
             </div>
           </div>
+        </div>
+
+        <div className="flex justify-end mt-4">
+          <Image
+            src="/icons/mastercard.svg"
+            alt="Mastercard"
+            width={60}
+            height={40}
+            className="opacity-90"
+          />
         </div>
       </div>
     </div>

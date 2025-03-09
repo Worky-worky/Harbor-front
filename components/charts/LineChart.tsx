@@ -1,65 +1,98 @@
 "use client"
+import React, { useEffect, useState } from 'react'
+import { Chart as ChartJS, LineElement, PointElement, LinearScale, Title, Tooltip, Legend, CategoryScale } from 'chart.js'
 import { Line } from 'react-chartjs-2'
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-} from 'chart.js'
+import { getUserByEmail,  } from '@/data/users'
+import { generateTransactionHistory } from '@/lib/generateTransactionHistory'
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-)
+ChartJS.register(LineElement, PointElement, LinearScale, Title, Tooltip, Legend, CategoryScale)
 
 interface LineChartProps {
-  data: {
-    labels: string[]
-    datasets: {
-      label: string
-      data: number[]
-      borderColor: string
-      tension: number
-    }[]
-  }
+  userEmail: string
 }
 
-export function LineChart({ data }: LineChartProps) {
+const LineChart = ({ userEmail }: LineChartProps) => {
+  const [income, setIncome] = useState<number[]>([])
+  const [expenses, setExpenses] = useState<number[]>([])
+  const [savings, setSavings] = useState<number[]>([])
+  const [labels, setLabels] = useState<string[]>([])
+
+  useEffect(() => {
+    if (userEmail) {
+      const user = getUserByEmail(userEmail)
+      if (user) {
+        const transactions = generateTransactionHistory(userEmail)
+
+        const incomeData: number[] = []
+        const expensesData: number[] = []
+        const savingsData: number[] = []
+        const labelsData: string[] = []
+
+        transactions.forEach(transaction => {
+          labelsData.push(transaction.date.toLocaleDateString())
+          if (transaction.type === 'credit') {
+            incomeData.push(transaction.amount)
+          } else if (transaction.type === 'debit') {
+            expensesData.push(transaction.amount)
+          }
+          savingsData.push(user.savings)
+        })
+
+        setIncome(incomeData)
+        setExpenses(expensesData)
+        setSavings(savingsData)
+        setLabels(labelsData)
+      }
+    }
+  }, [userEmail])
+
+  const data = {
+    labels: labels,
+    datasets: [
+      {
+        label: 'Income',
+        data: income,
+        borderColor: 'rgb(34, 197, 94)',
+        backgroundColor: 'rgba(34, 197, 94, 0.2)',
+        fill: true,
+      },
+      {
+        label: 'Expenses',
+        data: expenses,
+        borderColor: 'rgb(239, 68, 68)',
+        backgroundColor: 'rgba(239, 68, 68, 0.2)',
+        fill: true,
+      },
+      {
+        label: 'Savings',
+        data: savings,
+        borderColor: 'rgb(59, 130, 246)',
+        backgroundColor: 'rgba(59, 130, 246, 0.2)',
+        fill: true,
+      }
+    ]
+  }
+
   const options = {
     responsive: true,
-    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: 'top' as const,
-      }
+      },
+      title: {
+        display: true,
+        text: 'Financial Overview',
+      },
     },
-    scales: {
-      y: {
-        beginAtZero: true,
-        ticks: {
-          callback: function(this: any, value: string | number, index: number, ticks: any[]) {
-            if (typeof value === 'number') {
-              return value.toLocaleString()
-            }
-            return value
-          }
-        }
-      }
-    }
   }
 
   return (
-    <div className="h-48 w-full">
-      <Line data={data} options={options} />
+    <div className="w-full h-[400px] flex items-center justify-center">
+      <div className="w-full max-w-[800px]">
+        <Line data={data} options={options} />
+      </div>
     </div>
   )
 }
+
+export default LineChart
